@@ -55,8 +55,7 @@ class TestBooksCollector:
         assert collector.genre_age_rating == ['Ужасы', 'Детективы']
 
     @pytest.mark.parametrize('name', ['Кладбище Домашних Животных', 'Анна Каренина', 'Война и Мир'])
-    def test_add_new_book_books_are_added(self, name):
-        collector = BooksCollector()
+    def test_add_new_book_books_are_added(self, collector, name):
 
         collector.add_new_book(name)
         assert name in collector.books_genre.keys()
