@@ -26,14 +26,6 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
-    @pytest.fixture  # фикстура, которая создаёт коллекцию книг
-    def collector(self):
-        collector = BooksCollector()
-        collector.books_genre = {'Великий Гэтсби': 'Фантастика', 'Приключения Шерлока Холмса': 'Детективы',
-                                 'Дюна': 'Фантастика'}
-        collector.favorites = ['Дюна', 'Приключения Шерлока Холмса']
-        return collector
-
     def test_books_genre(self):
         collector = BooksCollector()
 
