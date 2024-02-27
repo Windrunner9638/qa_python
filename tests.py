@@ -29,12 +29,12 @@ class TestBooksCollector:
     def test_books_genre(self):
         collector = BooksCollector()
 
-        assert collector.books_genre == {}
+        assert collector.get_books_genre() == {}
 
     def test_favorites(self):
         collector = BooksCollector()
 
-        assert collector.favorites == []
+        assert collector.get_list_of_favorites_books() == []
 
     def test_genre(self):
         collector = BooksCollector()
@@ -50,7 +50,7 @@ class TestBooksCollector:
     def test_add_new_book_books_are_added(self, collector, name):
 
         collector.add_new_book(name)
-        assert name in collector.books_genre.keys()
+        assert name in collector.get_books_genre().keys()
 
     @pytest.mark.parametrize('name, genre', [['Кладбище Домашних Животных', 'Ужасы'], ['Ревизор', 'Комедии']])
     def test_set_book_genre_appropriate_genre_can_be_set_for_existing_book(self, collector, name, genre):
@@ -58,7 +58,7 @@ class TestBooksCollector:
         collector.add_new_book(name)
         collector.set_book_genre(name, genre)
 
-        assert collector.books_genre[name] == genre
+        assert collector.get_book_genre(name) == genre
 
     def test_get_book_genre_new_book_does_not_have_genre(self, collector):
 
@@ -80,12 +80,12 @@ class TestBooksCollector:
     def test_add_book_in_favorites_book_is_added(self, collector):
 
         collector.add_book_in_favorites('Великий Гэтсби')
-        assert 'Великий Гэтсби' in collector.favorites
+        assert 'Великий Гэтсби' in collector.get_list_of_favorites_books()
 
     def test_delete_book_from_favorites_book_is_deleted(self, collector):
 
         collector.delete_book_from_favorites('Дюна')
-        assert 'Дюна' not in collector.favorites
+        assert 'Дюна' not in collector.get_list_of_favorites_books()
 
     def test_get_list_of_favorites_books_true(self, collector):
 
