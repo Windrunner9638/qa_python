@@ -50,7 +50,7 @@ class TestBooksCollector:
     def test_add_new_book_books_are_added(self, collector, name):
 
         collector.add_new_book(name)
-        assert name in collector.get_books_genre().keys()
+        assert name in collector.get_books_genre()
 
     @pytest.mark.parametrize('name, genre', [['Кладбище Домашних Животных', 'Ужасы'], ['Ревизор', 'Комедии']])
     def test_set_book_genre_appropriate_genre_can_be_set_for_existing_book(self, collector, name, genre):
